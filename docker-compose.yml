@@ -1,0 +1,17 @@
+version: "3"
+services:
+  api:
+    image: karklis/apinewsredis
+    ports:
+      - "5000:3050"
+    links:
+      - link-db
+  link-db:
+    image: tutum/mongodb
+    ports:
+      - "27017:27017"
+      - "28017:28017"
+    environment:
+      - AUTH=no
+  redis:
+    image: "redis"
